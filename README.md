@@ -5,8 +5,10 @@
 **Desktop-grade PC optimization for gamers.**
 
 [![Website](https://img.shields.io/badge/🌐%20Website-visit-00f0ff?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app)
-[![Download](https://img.shields.io/badge/📥%20Download-Windows%2010%2F11-00f0ff?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app/download.html)
-[![Version](https://img.shields.io/badge/version-2.0.0-7c3aed?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app)
+[![Coming Soon](https://img.shields.io/badge/📥%20Download-Coming%20Soon-FF4655?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app/download.html)
+[![Status](https://img.shields.io/badge/Status-In%20Development-7c3aed?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app)
+
+> ⏳ **The boostUP desktop app is coming soon.** Stay tuned — the release will be announced on the website.
 
 </div>
 
@@ -39,7 +41,7 @@ A Windows desktop app that helps gamers squeeze every last frame out of their PC
 | **RAM** | 4 GB minimum |
 | **Disk Space** | 200 MB |
 | **Built With** | Rust · TypeScript · Tauri |
-| **Status** | 🔥 Active development |
+| **Status** | ⏳ Coming soon |
 
 </div>
 
