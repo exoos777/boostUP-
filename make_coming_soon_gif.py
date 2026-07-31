@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import math, random
 
-W, H = 600, 900
+W, H = 900, 340
 SCALE = 2
 SW, SH = W * SCALE, H * SCALE
 FPS = 24
@@ -40,79 +40,70 @@ def draw_radial_glow(img, cx, cy, r, color, strength=80):
 
 def draw_logo_watermark(img, t):
     logo = Image.open(LOGO).convert("RGBA")
-    logo = logo.resize((int(340 * SCALE), int(340 * SCALE)), Image.LANCZOS)
-    # tint dark
+    logo = logo.resize((int(240 * SCALE), int(240 * SCALE)), Image.LANCZOS)
     tint = Image.new("RGBA", logo.size, (40, 30, 12, 255))
     logo = Image.alpha_composite(logo, tint)
-    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
-    cx = (SW - logo.width) // 2
-    cy = int(230 * SCALE)
-    # fade in and out subtly
     a = 0.7 + 0.3 * math.sin(t * 1.1)
     alpha = logo.getchannel("A").point(lambda p: int(p * min(1, max(0, a))))
     logo.putalpha(alpha)
-    layer.paste(logo, (cx, cy), logo)
-    img.alpha_composite(layer)
+    cx = (SW - logo.width) // 2
+    cy = int(50 * SCALE)
+    img.alpha_composite(logo, (cx, cy))
 
 def draw_frame(img, t, d):
-    # --- background ---
-    draw_radial_glow(img, SW // 2, int(400 * SCALE), int(320 * SCALE), (150, 95, 25), 70)
+    # --- background glow ---
+    draw_radial_glow(img, SW // 2, int(170 * SCALE), int(300 * SCALE), (150, 95, 25), 60)
 
     # --- subtle grid ---
     step = 40 * SCALE
     for gx in range(0, SW, step):
-        d.line([gx, 0, gx, SH], fill=(70, 55, 30, 22))
+        d.line([gx, 0, gx, SH], fill=(70, 55, 30, 20))
     for gy in range(0, SH, step):
-        d.line([0, gy, SW, gy], fill=(70, 55, 30, 18))
+        d.line([0, gy, SW, gy], fill=(70, 55, 30, 16))
 
     # --- watermark logo ---
     draw_logo_watermark(img, t)
 
     # --- top bar ---
     mf = font(MONO_FONT, int(13 * SCALE))
-    d.text((30 * SCALE, 34 * SCALE), "BOOSTUP  v2.1.0", font=mf, fill=MUT)
+    d.text((26 * SCALE, 26 * SCALE), "BOOSTUP  v2.1.0", font=mf, fill=MUT)
 
-    # --- pulsing corner brackets ---
-    cb = 26 * SCALE
+    # --- corner brackets ---
+    cb = 22 * SCALE
     pul = 120 + 60 * math.sin(t * 2.4)
     ccol = AMBER + (int(pul),)
-    for cx, cy, sx, sy in [(18 * SCALE, 18 * SCALE, 1, 1),
-                           (SW - 18 * SCALE, 18 * SCALE, -1, 1),
-                           (18 * SCALE, SH - 18 * SCALE, 1, -1),
-                           (SW - 18 * SCALE, SH - 18 * SCALE, -1, -1)]:
+    for cx, cy, sx, sy in [(14 * SCALE, 14 * SCALE, 1, 1),
+                           (SW - 14 * SCALE, 14 * SCALE, -1, 1),
+                           (14 * SCALE, SH - 14 * SCALE, 1, -1),
+                           (SW - 14 * SCALE, SH - 14 * SCALE, -1, -1)]:
         d.line([cx, cy, cx + cb * sx, cy], fill=ccol, width=2 * SCALE)
         d.line([cx, cy, cx, cy + cb * sy], fill=ccol, width=2 * SCALE)
 
     # --- headline ---
-    hf = font(NAME_FONT, int(44 * SCALE))
+    hf = font(NAME_FONT, int(40 * SCALE))
     words = "COMING SOON"
     x = (SW - d.textlength(words, font=hf)) // 2
-    y = int(620 * SCALE)
-    # glow
+    y = int(120 * SCALE)
     glow = Image.new("RGBA", img.size, (0, 0, 0, 0))
     gd = ImageDraw.Draw(glow)
     gd.text((x, y), words, font=hf, fill=AMBER + (int(90 + 60 * math.sin(t * 2)),))
     glow = glow.filter(ImageFilter.GaussianBlur(10 * SCALE))
     img.alpha_composite(glow)
-    # per-letter reveal + shimmer
     xpos = x
     for i, ch in enumerate(words):
         ph = ((t - i * 0.06) % 1.4) / 1.4
-        if ph < 0.2:
-            a = int(255 * (ph / 0.2))
-        else:
-            a = 255
+        a = int(255 * (ph / 0.2)) if ph < 0.2 else 255
         col = lerp_color(GOLD, AMBER, (math.sin(t * 1.6 + i) + 1) / 2)
         d.text((xpos, y), ch, font=hf, fill=col + (a,))
         xpos += d.textlength(ch, font=hf)
 
     # --- subtitle ---
-    sf = font(NAME_FONT, int(17 * SCALE))
+    sf = font(NAME_FONT, int(16 * SCALE))
     sub = "Desktop-grade PC optimization for gamers"
     sx = (SW - d.textlength(sub, font=sf)) // 2
-    d.text((sx, y + int(72 * SCALE)), sub, font=sf, fill=TEXT)
+    d.text((sx, y + int(58 * SCALE)), sub, font=sf, fill=TEXT)
 
-    # --- boot log (center) ---
+    # --- boot log (left) ---
     lines = [
         "\u279c  initializing core modules",
         "\u279c  loading optimizer engine",
@@ -125,33 +116,30 @@ def draw_frame(img, t, d):
             continue
         nch = min(len(ln), int(lt * 22))
         shown = ln[:nch]
-        ly = int(270 * SCALE) + li * 26 * SCALE
-        d.text((110 * SCALE, ly), shown, font=mf, fill=GOLD)
+        ly = int(78 * SCALE) + li * 22 * SCALE
+        d.text((60 * SCALE, ly), shown, font=mf, fill=GOLD)
         if nch < len(ln) and int(t * 3) % 2 == 0:
-            d.text((110 * SCALE + d.textlength(shown, font=mf), ly), "_", font=mf, fill=GOLD)
-        # status tick
+            d.text((60 * SCALE + d.textlength(shown, font=mf), ly), "_", font=mf, fill=GOLD)
         if lt > 1.0:
-            d.text((640 * SCALE, ly), "[ OK ]", font=mf, fill=GOLD)
+            d.text((300 * SCALE, ly), "[ OK ]", font=mf, fill=GOLD)
 
-    # --- progress bar ---
-    pw = 420 * SCALE
-    px, py = int(90 * SCALE), int(540 * SCALE)
-    d.rounded_rectangle([px, py, px + pw, py + 12 * SCALE], radius=6 * SCALE, fill=(30, 24, 14, 255))
-    prog = min(0.92, (t * 0.30) / 1.0) * (1 / 0.92) if t < 3.2 else 0.92
+    # --- progress bar (right) ---
+    pw = 200 * SCALE
+    px, py = int(560 * SCALE), int(120 * SCALE)
+    d.rounded_rectangle([px, py, px + pw, py + 10 * SCALE], radius=5 * SCALE, fill=(30, 24, 14, 255))
     prog = min(0.92, max(0, t * 0.30)) if t < 3.05 else 0.92
     w = int(pw * (prog / 0.92))
-    d.rounded_rectangle([px, py, px + w, py + 12 * SCALE], radius=6 * SCALE, fill=AMBER)
-    # sheen
+    d.rounded_rectangle([px, py, px + w, py + 10 * SCALE], radius=5 * SCALE, fill=AMBER)
     sheen_x = px + ((t * 1.5 * pw) % (pw + 40 * SCALE)) - 20 * SCALE
-    d.rounded_rectangle([sheen_x, py, sheen_x + 36 * SCALE, py + 12 * SCALE], radius=6 * SCALE,
-                        fill=(255, 225, 160, 160))
-    d.text((px + pw + 18 * SCALE, py - 3 * SCALE), f"{int(prog * 100)}%", font=mf, fill=GOLD)
+    d.rounded_rectangle([sheen_x, py, sheen_x + 30 * SCALE, py + 10 * SCALE], radius=5 * SCALE,
+                        fill=(255, 225, 160, 150))
+    d.text((px + pw + 14 * SCALE, py - 2 * SCALE), f"{int(prog * 100)}%", font=mf, fill=GOLD)
 
-    # --- URL ---
-    uf = font(MONO_FONT, int(15 * SCALE))
+    # --- URL (right, under bar) ---
+    uf = font(MONO_FONT, int(13 * SCALE))
     url = "myboostup.netlify.app"
     ux = (SW - d.textlength(url, font=uf)) // 2
-    uy = int(720 * SCALE)
+    uy = int(248 * SCALE)
     d.text((ux, uy), url, font=uf, fill=TEXT)
     if int(t * 2.4) % 2 == 0:
         d.text((ux + d.textlength(url, font=uf) + 6 * SCALE, uy), "_", font=uf, fill=GOLD)
@@ -160,15 +148,15 @@ def draw_frame(img, t, d):
     sy = int(((t * 160 * SCALE) % (SH + 160 * SCALE)) - 80 * SCALE)
     scan = Image.new("RGBA", img.size, (0, 0, 0, 0))
     sd = ImageDraw.Draw(scan)
-    h = 60 * SCALE
+    h = 50 * SCALE
     for i in range(h):
         a = int(7 * math.exp(-i / (h * 0.3)))
-        sd.line([16 * SCALE, sy + i, SW - 16 * SCALE, sy + i], fill=GOLD + (a,))
+        sd.line([12 * SCALE, sy + i, SW - 12 * SCALE, sy + i], fill=GOLD + (a,))
     img.alpha_composite(scan)
 
     # --- particles ---
     prng = random.Random(13)
-    for i in range(20):
+    for i in range(18):
         pxp = (prng.random() * SW, ((prng.random() * SH) - (t * 22 * SCALE) % SH) % SH)
         a = int(30 + 60 * math.sin(t * 2.2 + i))
         r = int(SCALE * (1.5 + (i % 3)))
