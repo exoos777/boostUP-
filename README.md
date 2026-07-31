@@ -49,6 +49,13 @@ Disk Space    :  200 MB free
 > **Coming soon.** The full release is being polished right now.
 > Stay in the loop on the [website](https://myboostup.netlify.app).
 
+**Roadmap**
+
+- [x] Core optimizer engine
+- [x] Network routing & diagnostics
+- [ ] Public beta
+- [ ] v1.0 stable release
+
 ---
 
 <p align="center">
