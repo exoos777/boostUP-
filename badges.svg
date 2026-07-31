@@ -40,8 +40,7 @@
     <rect x="382" y="6" width="176" height="44" rx="4" fill="#0B0D12"/>
     <rect x="382" y="6" width="176" height="44" rx="4" fill="none" stroke="#7C3AED" stroke-width="1.2" opacity="0.7"/>
     <path d="M382 20 V12 H390" stroke="#7C3AED" stroke-width="2"/>
-    <circle cx="408" cy="25" r="3" fill="#7C3AED"/>
-    <path d="M398 37 C398 31 418 31 418 37" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/>
-    <text x="426" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DEVELOPER</text>
+    <path d="M404 16.6 C400.6 17.2 400.2 19.8 400.2 21.4 C400.2 23.4 401 25 403 25.6 C403.4 25.7 403.4 25.9 403.4 26 V29 C403.4 29.5 403.3 29.8 402.9 29.7 C399.6 28.7 397 25.9 397 21.6 C397 17.1 400.5 14 405 14 C409.5 14 413 17.1 413 21.6 C413 25.9 410.4 28.7 407.1 29.7 C406.7 29.8 406.6 29.5 406.6 29 V26 C406.6 25.9 406.6 25.7 407 25.6 C409 25 409.8 23.4 409.8 21.4 C409.8 19.8 409.4 17.2 406 16.6 Z" fill="#7C3AED"/>
+    <text x="416" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DEVELOPER</text>
   </g>
 </svg>
