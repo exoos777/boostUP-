@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="560" height="56" viewBox="0 0 560 56" fill="none">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
-      .mono { font-family: 'JetBrains Mono', Consolas, monospace; }
+      .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
       @keyframes glitch {
         0%, 92%, 100% { transform: translate(0, 0); }
         93% { transform: translate(-2px, 1px); }

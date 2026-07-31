@@ -10,9 +10,8 @@
       <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
     </linearGradient>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap');
-      .display { font-family: 'Orbitron', 'Segoe UI', sans-serif; }
-      .mono { font-family: 'JetBrains Mono', Consolas, monospace; }
+      .display { font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
       @keyframes fillbar {
         from { width: 0; }
         to { width: 460; }
