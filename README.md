@@ -13,7 +13,7 @@
 
 ---
 
-## 🎯 What is this?
+## <img src="https://cdn.discordapp.com/emojis/1414220135606259733.webp?size=32&animated=true" alt="emoji" width="26"> What is this?
 
 A **Windows desktop app** that makes your PC run faster, your ping lower, and your games smoother — without the manual tinkering.
 
@@ -21,7 +21,7 @@ Think of it as a pit crew for your machine. 🏎️
 
 ---
 
-## 🔧 What it does
+## <img src="https://cdn.discordapp.com/emojis/1414220135606259733.webp?size=32&animated=true" alt="emoji" width="26"> What it does
 
 | Tool | Effect |
 |:-----|:-------|
@@ -33,7 +33,7 @@ Think of it as a pit crew for your machine. 🏎️
 
 ---
 
-## 💾 System requirements
+## <img src="https://cdn.discordapp.com/emojis/1414220135606259733.webp?size=32&animated=true" alt="emoji" width="26"> System requirements
 
 ```
 OS            :  Windows 10 / 11
@@ -44,7 +44,7 @@ Disk Space    :  200 MB free
 
 ---
 
-## ⏳ Status
+## <img src="https://cdn.discordapp.com/emojis/1414220135606259733.webp?size=32&animated=true" alt="emoji" width="26"> Status
 
 > **Coming soon.** The full release is being polished right now.
 > Stay in the loop on the [website](https://myboostup.netlify.app).
