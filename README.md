@@ -56,6 +56,6 @@ A Windows desktop app that helps gamers squeeze every last frame out of their PC
 > **This is a public overview of the boostUP project.**
 > The full source code is kept private.
 
-**Made with ❤️ for gamers.**
+**Made with ❤️ by [Farma](https://github.com/farma3334).**
 
 </div>
