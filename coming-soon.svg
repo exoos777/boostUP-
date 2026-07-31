@@ -9,6 +9,12 @@
       <stop offset="50%" stop-color="#7c3aed"/>
       <stop offset="100%" stop-color="#ff4655"/>
     </linearGradient>
+    <linearGradient id="accentShimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="40%" stop-color="#7c3aed"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#ff4655"/>
+    </linearGradient>
     <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="100%" stop-color="#c8d0e0"/>
@@ -27,15 +33,49 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.25; }
+        50% { opacity: 0.55; }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.3; }
+      }
+      @keyframes shimmer {
+        0% { opacity: 0.4; }
+        50% { opacity: 1; }
+        100% { opacity: 0.4; }
+      }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .float { animation: float 3s ease-in-out infinite; }
+      .pulse { animation: pulse 2.5s ease-in-out infinite; }
+      .blink { animation: blink 1.2s ease-in-out infinite; }
+      .shimmer { animation: shimmer 2.8s ease-in-out infinite; }
+      .spin-slow { animation: spin 14s linear infinite; transform-origin: 400px 130px; }
+      .glow-title { animation: pulse 3s ease-in-out infinite; }
+    </style>
   </defs>
 
   <!-- Background -->
   <rect width="800" height="260" rx="24" fill="url(#bg)"/>
-  <rect width="800" height="260" rx="24" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.5"/>
+  <rect width="800" height="260" rx="24" fill="none" stroke="url(#accentShimmer)" stroke-width="1.5" class="shimmer" opacity="0.6"/>
 
   <!-- Accent glow blobs -->
-  <ellipse cx="660" cy="40" rx="120" ry="80" fill="#7c3aed" opacity="0.12" filter="url(#softGlow)"/>
-  <ellipse cx="140" cy="220" rx="130" ry="70" fill="#00f0ff" opacity="0.08" filter="url(#softGlow)"/>
+  <ellipse cx="660" cy="40" rx="120" ry="80" fill="#7c3aed" opacity="0.12" filter="url(#softGlow)" class="pulse"/>
+  <ellipse cx="140" cy="220" rx="130" ry="70" fill="#00f0ff" opacity="0.08" filter="url(#softGlow)" class="pulse"/>
+
+  <!-- Orbit ring -->
+  <g class="spin-slow" opacity="0.25">
+    <ellipse cx="400" cy="130" rx="150" ry="30" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="8 12"/>
+  </g>
 
   <!-- Grid dots -->
   <g fill="#ffffff" opacity="0.05">
@@ -45,28 +85,34 @@
     <circle cx="620" cy="120" r="1.5"/><circle cx="680" cy="120" r="1.5"/><circle cx="740" cy="120" r="1.5"/>
   </g>
 
-  <!-- Rocket / lightning icon -->
-  <g transform="translate(400, 92)">
-    <polygon points="0,-28 14,10 0,2 -14,10" fill="url(#accent)" filter="url(#glow)"/>
-    <polygon points="0,-28 -5,4 -14,10 0,2" fill="#ffffff" opacity="0.35"/>
-    <polygon points="0,10 -6,22 -3,16 0,20 3,16 6,22" fill="#ffffff" opacity="0.6"/>
+  <!-- Rocket / lightning icon (floating) -->
+  <g class="float">
+    <g transform="translate(400, 92)">
+      <polygon points="0,-28 14,10 0,2 -14,10" fill="url(#accentShimmer)" filter="url(#glow)"/>
+      <polygon points="0,-28 -5,4 -14,10 0,2" fill="#ffffff" opacity="0.35"/>
+      <polygon points="0,10 -6,22 -3,16 0,20 3,16 6,22" fill="#ffffff" opacity="0.6" class="blink"/>
+    </g>
   </g>
 
   <!-- Title -->
-  <text x="400" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="url(#textGrad)" letter-spacing="2">COMING SOON</text>
+  <g class="glow-title">
+    <text x="400" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="url(#textGrad)" letter-spacing="2">COMING SOON</text>
+  </g>
 
   <!-- Underline -->
-  <rect x="280" y="72" width="240" height="3" rx="1.5" fill="url(#accent)" filter="url(#glow)"/>
+  <rect x="280" y="72" width="240" height="3" rx="1.5" fill="url(#accentShimmer)" filter="url(#glow)" class="shimmer"/>
 
   <!-- Subtitle -->
   <text x="400" y="148" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#9aa3b8" letter-spacing="4">THE DESKTOP APP IS ON ITS WAY</text>
 
-  <!-- Divider dots -->
+  <!-- Divider dots (blinking) -->
   <g fill="#00f0ff" opacity="0.7">
-    <circle cx="385" cy="168" r="3"/><circle cx="400" cy="168" r="3"/><circle cx="415" cy="168" r="3"/>
+    <circle cx="385" cy="168" r="3" class="blink"/>
+    <circle cx="400" cy="168" r="3" class="blink" style="animation-delay:0.15s"/>
+    <circle cx="415" cy="168" r="3" class="blink" style="animation-delay:0.3s"/>
   </g>
 
   <!-- Subscribe / website hint -->
   <text x="400" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#6b7388" letter-spacing="1">Be the first to know when it drops</text>
-  <text x="400" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#00f0ff" filter="url(#glow)">myboostup.netlify.app</text>
+  <text x="400" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#00f0ff" filter="url(#glow)" class="shimmer">myboostup.netlify.app</text>
 </svg>
