@@ -8,9 +8,13 @@
 [![Coming Soon](https://img.shields.io/badge/📥%20Download-Coming%20Soon-FF4655?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app/download.html)
 [![Status](https://img.shields.io/badge/Status-In%20Development-7c3aed?style=for-the-badge&labelColor=0a0a0f)](https://myboostup.netlify.app)
 
-> ⏳ **The boostUP desktop app is coming soon.** Stay tuned — the release will be announced on the website.
-
 </div>
+
+---
+
+<p align="center">
+  <img src="coming-soon.svg" alt="boostUP Coming Soon" width="700">
+</p>
 
 ---
 
