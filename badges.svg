@@ -8,12 +8,7 @@
         95% { transform: translate(2px, -1px); }
         97% { transform: translate(-1px, 0); }
       }
-      @keyframes blinkDot {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.2; }
-      }
       .glitch { animation: glitch 5s infinite; }
-      .dot { animation: blinkDot 1.6s ease-in-out infinite; }
     </style>
   </defs>
 
@@ -21,26 +16,27 @@
   <g>
     <rect x="2" y="6" width="172" height="44" rx="4" fill="#0B0D12"/>
     <rect x="2" y="6" width="172" height="44" rx="4" fill="none" stroke="#00E5FF" stroke-width="1.2" opacity="0.7"/>
-    <path d="M2 20 V12 H10" stroke="#00E5FF" stroke-width="2"/>
-    <circle cx="16" cy="28" r="3" fill="#00E5FF" class="dot"/>
-    <text x="28" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">WEBSITE</text>
+    <circle cx="18" cy="28" r="10" stroke="#00E5FF" stroke-width="1.6" fill="none"/>
+    <path d="M8 28 H28 M18 18 C14 22 14 34 18 38 C22 34 22 22 18 18" stroke="#00E5FF" stroke-width="1.6" fill="none"/>
+    <text x="34" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">WEBSITE</text>
   </g>
 
   <!-- Download -->
   <g class="glitch">
     <rect x="192" y="6" width="172" height="44" rx="4" fill="#0B0D12"/>
     <rect x="192" y="6" width="172" height="44" rx="4" fill="none" stroke="#FF3B5C" stroke-width="1.2" opacity="0.7"/>
-    <path d="M192 20 V12 H200" stroke="#FF3B5C" stroke-width="2"/>
-    <path d="M206 24 L212 30 L218 24 M212 16 V30" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M204 21 C204 16.5 212 16.5 212 21 V28 C212 32.5 204 32.5 204 28 Z" stroke="#FF3B5C" stroke-width="1.6" fill="none"/>
+    <path d="M212 34 V22 M208 26 L212 22 L216 26" stroke="#FF3B5C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     <text x="228" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DOWNLOAD</text>
   </g>
 
-  <!-- Developer -->
+  <!-- Developer (GitHub) -->
   <g>
     <rect x="382" y="6" width="176" height="44" rx="4" fill="#0B0D12"/>
     <rect x="382" y="6" width="176" height="44" rx="4" fill="none" stroke="#7C3AED" stroke-width="1.2" opacity="0.7"/>
-    <path d="M382 20 V12 H390" stroke="#7C3AED" stroke-width="2"/>
-    <path d="M404 16.6 C400.6 17.2 400.2 19.8 400.2 21.4 C400.2 23.4 401 25 403 25.6 C403.4 25.7 403.4 25.9 403.4 26 V29 C403.4 29.5 403.3 29.8 402.9 29.7 C399.6 28.7 397 25.9 397 21.6 C397 17.1 400.5 14 405 14 C409.5 14 413 17.1 413 21.6 C413 25.9 410.4 28.7 407.1 29.7 C406.7 29.8 406.6 29.5 406.6 29 V26 C406.6 25.9 406.6 25.7 407 25.6 C409 25 409.8 23.4 409.8 21.4 C409.8 19.8 409.4 17.2 406 16.6 Z" fill="#7C3AED"/>
-    <text x="416" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DEVELOPER</text>
+    <g transform="translate(400, 16)">
+      <path d="M9 0 C4 0 0 4 0 8.9 C0 12.8 2.6 16.1 6.1 17.3 C6.6 17.4 6.8 17.1 6.8 16.8 L6.8 15.3 C4.3 15.8 3.8 14.2 3.8 14.2 C3.4 13.1 2.8 12.9 2.8 12.9 C2 12.4 2.9 12.4 2.9 12.4 C3.8 12.5 4.3 13.4 4.3 13.4 C5.1 15 6.5 14.7 6.9 14.5 C7 14 7.2 13.7 7.4 13.5 C5.4 13.3 3.3 12.5 3.3 8.9 C3.3 7.9 3.7 7 4.2 6.3 C4.1 6 3.7 5 4.2 3.7 C4.2 3.7 5.1 3.4 6.8 4.6 C7.6 4.3 8.5 4.2 9.4 4.2 C10.3 4.2 11.2 4.3 12 4.6 C13.7 3.4 14.6 3.7 14.6 3.7 C15.1 5 14.7 6 14.6 6.3 C15.1 7 15.5 7.9 15.5 8.9 C15.5 12.5 13.4 13.3 11.4 13.5 C11.7 13.8 11.9 14.3 11.9 15.1 L11.9 16.8 C11.9 17.1 12.1 17.4 12.6 17.3 C16.1 16.1 18.7 12.8 18.7 8.9 C18.7 4 14.7 0 9.7 0 Z" fill="#7C3AED"/>
+    </g>
+    <text x="430" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DEVELOPER</text>
   </g>
 </svg>
