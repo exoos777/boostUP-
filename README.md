@@ -20,9 +20,10 @@
 ```
 
 <p align="center">
-  <a href="https://myboostup.netlify.app"><img src="https://img.shields.io/badge/WEBSITE-00f0ff?style=flat-square&logo=internetexplorer&logoColor=0a0a0f" height="28"></a>&nbsp;
-  <a href="https://myboostup.netlify.app/download.html"><img src="https://img.shields.io/badge/DOWNLOAD-FF4655?style=flat-square&logo=windows&logoColor=white" height="28"></a>&nbsp;
-  <a href="https://github.com/farma3334"><img src="https://img.shields.io/badge/DEVELOPER-7c3aed?style=flat-square&logo=github&logoColor=white" height="28"></a>
+  <a href="https://myboostup.netlify.app"><img src="badges.svg" alt="boostUP links" width="560"></a>
+</p>
+<p align="center">
+  <sub><a href="https://myboostup.netlify.app">Website</a> · <a href="https://myboostup.netlify.app/download.html">Download</a> · <a href="https://github.com/farma3334">Developer</a></sub>
 </p>
 
 ---

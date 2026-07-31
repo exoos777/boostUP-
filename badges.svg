@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="56" viewBox="0 0 560 56" fill="none">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap');
+      .mono { font-family: 'JetBrains Mono', Consolas, monospace; }
+      @keyframes glitch {
+        0%, 92%, 100% { transform: translate(0, 0); }
+        93% { transform: translate(-2px, 1px); }
+        95% { transform: translate(2px, -1px); }
+        97% { transform: translate(-1px, 0); }
+      }
+      @keyframes blinkDot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+      }
+      .glitch { animation: glitch 5s infinite; }
+      .dot { animation: blinkDot 1.6s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Website -->
+  <g>
+    <rect x="2" y="6" width="172" height="44" rx="4" fill="#0B0D12"/>
+    <rect x="2" y="6" width="172" height="44" rx="4" fill="none" stroke="#00E5FF" stroke-width="1.2" opacity="0.7"/>
+    <path d="M2 20 V12 H10" stroke="#00E5FF" stroke-width="2"/>
+    <circle cx="16" cy="28" r="3" fill="#00E5FF" class="dot"/>
+    <text x="28" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">WEBSITE</text>
+  </g>
+
+  <!-- Download -->
+  <g class="glitch">
+    <rect x="192" y="6" width="172" height="44" rx="4" fill="#0B0D12"/>
+    <rect x="192" y="6" width="172" height="44" rx="4" fill="none" stroke="#FF3B5C" stroke-width="1.2" opacity="0.7"/>
+    <path d="M192 20 V12 H200" stroke="#FF3B5C" stroke-width="2"/>
+    <path d="M206 24 L212 30 L218 24 M212 16 V30" stroke="#FF3B5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="228" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DOWNLOAD</text>
+  </g>
+
+  <!-- Developer -->
+  <g>
+    <rect x="382" y="6" width="176" height="44" rx="4" fill="#0B0D12"/>
+    <rect x="382" y="6" width="176" height="44" rx="4" fill="none" stroke="#7C3AED" stroke-width="1.2" opacity="0.7"/>
+    <path d="M382 20 V12 H390" stroke="#7C3AED" stroke-width="2"/>
+    <circle cx="408" cy="25" r="3" fill="#7C3AED"/>
+    <path d="M398 37 C398 31 418 31 418 37" stroke="#7C3AED" stroke-width="2" stroke-linecap="round"/>
+    <text x="426" y="34" class="mono" font-size="13" fill="#E8EEF7" letter-spacing="1">DEVELOPER</text>
+  </g>
+</svg>
