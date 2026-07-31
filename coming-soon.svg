@@ -1,118 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="260" viewBox="0 0 800 260" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a0a12"/>
-      <stop offset="100%" stop-color="#12101f"/>
+    <linearGradient id="barFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#FF3B5C"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="50%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#ff4655"/>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00E5FF" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="accentShimmer" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="40%" stop-color="#7c3aed"/>
-      <stop offset="60%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#ff4655"/>
-    </linearGradient>
-    <linearGradient id="textGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#c8d0e0"/>
-    </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="20" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
     <style>
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-      }
-      @keyframes pulse {
-        0%, 100% { opacity: 0.25; }
-        50% { opacity: 0.55; }
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap');
+      .display { font-family: 'Orbitron', 'Segoe UI', sans-serif; }
+      .mono { font-family: 'JetBrains Mono', Consolas, monospace; }
+      @keyframes fillbar {
+        from { width: 0; }
+        to { width: 460; }
       }
       @keyframes blink {
         0%, 100% { opacity: 1; }
-        50% { opacity: 0.3; }
+        50% { opacity: 0; }
       }
-      @keyframes shimmer {
-        0% { opacity: 0.4; }
+      @keyframes scanline {
+        from { transform: translateX(-520px); }
+        to { transform: translateX(520px); }
+      }
+      @keyframes softpulse {
+        0%, 100% { opacity: 0.5; }
         50% { opacity: 1; }
-        100% { opacity: 0.4; }
       }
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      .float { animation: float 3s ease-in-out infinite; }
-      .pulse { animation: pulse 2.5s ease-in-out infinite; }
-      .blink { animation: blink 1.2s ease-in-out infinite; }
-      .shimmer { animation: shimmer 2.8s ease-in-out infinite; }
-      .spin-slow { animation: spin 14s linear infinite; transform-origin: 400px 130px; }
-      .glow-title { animation: pulse 3s ease-in-out infinite; }
+      .bar { animation: fillbar 3.2s cubic-bezier(0.22,1,0.36,1) forwards; }
+      .cursor { animation: blink 1s step-end infinite; }
+      .scan { animation: scanline 4s linear infinite; }
+      .pulse { animation: softpulse 2.2s ease-in-out infinite; }
+      .corner { animation: softpulse 3.4s ease-in-out infinite; }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="800" height="260" rx="24" fill="url(#bg)"/>
-  <rect width="800" height="260" rx="24" fill="none" stroke="url(#accentShimmer)" stroke-width="1.5" class="shimmer" opacity="0.6"/>
+  <!-- Panel -->
+  <rect x="40" y="30" width="720" height="240" rx="10" fill="#0B0D12"/>
+  <rect x="40" y="30" width="720" height="240" rx="10" fill="none" stroke="#1B2230" stroke-width="1.5"/>
 
-  <!-- Accent glow blobs -->
-  <ellipse cx="660" cy="40" rx="120" ry="80" fill="#7c3aed" opacity="0.12" filter="url(#softGlow)" class="pulse"/>
-  <ellipse cx="140" cy="220" rx="130" ry="70" fill="#00f0ff" opacity="0.08" filter="url(#softGlow)" class="pulse"/>
-
-  <!-- Orbit ring -->
-  <g class="spin-slow" opacity="0.25">
-    <ellipse cx="400" cy="130" rx="150" ry="30" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="8 12"/>
+  <!-- Corner brackets (HUD frame) -->
+  <g stroke="#00E5FF" stroke-width="2" opacity="0.9">
+    <path d="M34 64 V34 H64" class="corner"/>
+    <path d="M736 34 H766 V64" class="corner" style="animation-delay:.4s"/>
+    <path d="M34 236 V266 H64" class="corner" style="animation-delay:.8s"/>
+    <path d="M736 266 V236 H766" class="corner" style="animation-delay:1.2s"/>
   </g>
 
-  <!-- Grid dots -->
-  <g fill="#ffffff" opacity="0.05">
-    <circle cx="60" cy="60" r="1.5"/><circle cx="120" cy="60" r="1.5"/><circle cx="180" cy="60" r="1.5"/>
-    <circle cx="60" cy="120" r="1.5"/><circle cx="120" cy="120" r="1.5"/><circle cx="180" cy="120" r="1.5"/>
-    <circle cx="620" cy="60" r="1.5"/><circle cx="680" cy="60" r="1.5"/><circle cx="740" cy="60" r="1.5"/>
-    <circle cx="620" cy="120" r="1.5"/><circle cx="680" cy="120" r="1.5"/><circle cx="740" cy="120" r="1.5"/>
+  <!-- Title bar -->
+  <text x="62" y="64" class="display" font-size="15" font-weight="700" fill="#E8EEF7" letter-spacing="3">BOOSTUP</text>
+  <text x="150" y="64" class="mono" font-size="12" fill="#7A8499" letter-spacing="1">BUILD 2.0.0</text>
+  <circle cx="722" cy="56" r="4" fill="#FF3B5C" class="pulse"/>
+
+  <line x1="60" y1="78" x2="740" y2="78" stroke="#1B2230" stroke-width="1"/>
+
+  <!-- Boot log -->
+  <g class="mono" font-size="13">
+    <text x="62" y="108" fill="#00E5FF">&gt;</text>
+    <text x="76" y="108" fill="#C9D2E2">initializing core modules...</text>
+    <text x="676" y="108" text-anchor="end" fill="#3DDC84">[ OK ]</text>
+
+    <text x="62" y="130" fill="#00E5FF">&gt;</text>
+    <text x="76" y="130" fill="#C9D2E2">loading optimizer engine...</text>
+    <text x="676" y="130" text-anchor="end" fill="#3DDC84">[ OK ]</text>
+
+    <text x="62" y="152" fill="#00E5FF">&gt;</text>
+    <text x="76" y="152" fill="#C9D2E2">calibrating network routing...</text>
+    <text x="676" y="152" text-anchor="end" fill="#3DDC84">[ OK ]</text>
+
+    <text x="62" y="174" fill="#00E5FF">&gt;</text>
+    <text x="76" y="174" fill="#C9D2E2">finalizing release build</text>
+    <text x="676" y="174" text-anchor="end" fill="#FF3B5C" class="pulse">[...]</text>
   </g>
 
-  <!-- Rocket / lightning icon (floating) -->
-  <g class="float">
-    <g transform="translate(400, 92)">
-      <polygon points="0,-28 14,10 0,2 -14,10" fill="url(#accentShimmer)" filter="url(#glow)"/>
-      <polygon points="0,-28 -5,4 -14,10 0,2" fill="#ffffff" opacity="0.35"/>
-      <polygon points="0,10 -6,22 -3,16 0,20 3,16 6,22" fill="#ffffff" opacity="0.6" class="blink"/>
-    </g>
-  </g>
+  <!-- Progress bar -->
+  <rect x="62" y="200" width="460" height="6" rx="3" fill="#161B26"/>
+  <rect x="62" y="200" width="0" height="6" rx="3" fill="url(#barFill)" class="bar"/>
+  <text x="532" y="207" class="mono" font-size="12" fill="#00E5FF" font-weight="600">92%</text>
+  <text x="62" y="228" class="mono" font-size="10" fill="#7A8499" letter-spacing="1.5">ALMOST THERE</text>
 
-  <!-- Title -->
-  <g class="glow-title">
-    <text x="400" y="60" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" fill="url(#textGrad)" letter-spacing="2">COMING SOON</text>
-  </g>
+  <!-- Scanline -->
+  <rect x="40" y="30" width="520" height="240" rx="10" fill="url(#scan)" class="scan" pointer-events="none"/>
 
-  <!-- Underline -->
-  <rect x="280" y="72" width="240" height="3" rx="1.5" fill="url(#accentShimmer)" filter="url(#glow)" class="shimmer"/>
+  <!-- Headline -->
+  <text x="400" y="196" text-anchor="middle" class="display" font-size="30" font-weight="900" fill="#E8EEF7" letter-spacing="8">COMING SOON</text>
 
-  <!-- Subtitle -->
-  <text x="400" y="148" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#9aa3b8" letter-spacing="4">THE DESKTOP APP IS ON ITS WAY</text>
-
-  <!-- Divider dots (blinking) -->
-  <g fill="#00f0ff" opacity="0.7">
-    <circle cx="385" cy="168" r="3" class="blink"/>
-    <circle cx="400" cy="168" r="3" class="blink" style="animation-delay:0.15s"/>
-    <circle cx="415" cy="168" r="3" class="blink" style="animation-delay:0.3s"/>
-  </g>
-
-  <!-- Subscribe / website hint -->
-  <text x="400" y="196" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="14" fill="#6b7388" letter-spacing="1">Be the first to know when it drops</text>
-  <text x="400" y="222" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#00f0ff" filter="url(#glow)" class="shimmer">myboostup.netlify.app</text>
+  <!-- URL -->
+  <text x="400" y="242" text-anchor="middle" class="mono" font-size="14" fill="#00E5FF" letter-spacing="1">myboostup.netlify.app</text>
+  <rect x="322" y="226" width="6" height="18" fill="#00E5FF" class="cursor"/>
 </svg>
